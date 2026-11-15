@@ -1,0 +1,44 @@
+/* Arenita SMP: azul y amarillo (capa sobre theme.css) */
+:root {
+  --bg: #0a1a3a; --felt: #0b3a7a; --felt-2: #1150a4;
+  --gold: #ffcc1a; --gold-2: #ffdd55;
+  --panel: #14306a; --hi: #4a7bd0; --lo: #0a1d45;
+  --muted: #a9bde6; --good: #ffe066;
+  --bevel: inset 3px 3px 0 var(--hi), inset -3px -3px 0 var(--lo);
+}
+body { background: url("/assets/bg-stone.svg") 0 0 / 64px 64px, var(--bg); color: #f2f6ff; }
+.topbar { background: url("/assets/bg-wood.svg") 0 0 / 64px 64px; box-shadow: inset 0 -4px 0 #06214f, 0 4px 0 rgba(0,0,0,.35); }
+.brand { font-size: 1.7rem; color: #ffd21a; letter-spacing: .06em; text-shadow: 3px 3px 0 #06214f, 5px 5px 0 #000; }
+.brand img { width: 44px; height: 44px; }
+.nav a { color: #e4eeff; background: rgba(5,20,60,.55); box-shadow: inset 2px 2px 0 rgba(120,170,255,.3), inset -2px -2px 0 rgba(0,0,30,.55); }
+.nav a:hover { background: rgba(255,214,26,.18); color: #fff; }
+.nav a.active, .btn.primary, .seg button.active, .chip-btn:hover:not(:disabled), .chip-btn.on {
+  color: #2a1a00; background: #ffcc1a; text-shadow: none;
+  box-shadow: inset 3px 3px 0 #fff0a0, inset -3px -3px 0 #b78600, 0 0 0 3px #000;
+}
+.nav a.active { box-shadow: inset 3px 3px 0 #fff0a0, inset -3px -3px 0 #b78600, 0 0 0 2px #000; }
+.btn.primary:hover:not(:disabled) { background: #ffdb4d; }
+.nav a.live::after { background: #ffdd55; }
+.btn { background: #3a62b8; text-shadow: 2px 2px 0 #12275a; }
+.btn:not(.primary):hover:not(:disabled) { background: #4d78d4; box-shadow: inset 3px 3px 0 #86abf0, inset -3px -3px 0 #25418a, 0 0 0 3px #000; }
+.btn.ghost { background: #14306a; }
+.btn:disabled { background: #223c78; color: #7f95c8; box-shadow: inset 3px 3px 0 #2f4d93, inset -3px -3px 0 #14275a, 0 0 0 3px #000; }
+.icon-btn { background: #3a62b8; }
+.icon-btn:hover { background: #4d78d4; }
+.seg { background: #0a1d45; }
+.seg button { color: #a9bde6; }
+.demo-banner { background: #14306a; color: #ffdd55; }
+.footer { background: #050f26; border-top-color: #14306a; color: #8da4d6; }
+.balance { box-shadow: inset 0 0 0 3px #b78600, 0 0 0 3px #000; }
+.dice-slider, .legal-check input { accent-color: #ffcc1a; }
+.panel, .game-side, .dlg-body { background-color: #14306a; }
+h1, h2, h3 { text-shadow: 3px 3px 0 #06214f; }
+.hero h1 .gold { color: #ffd21a; }
+.ck-road { background: #1c2c52; }
+.ck-lane { background: #2a3f78; border-right-color: #e6eeff; }
+.ck-lane:nth-child(even) { background: #243870; }
+.ck-start { background: #1a6bd6; }
+.ck-lane:last-child { background: #ffcc1a; }
+.ck-lane:last-child .ck-mult { color: #2a1a00; text-shadow: none; }
+.rc { background: #2a56a8; } .rc.green { background: #0e7a3a; } .rc.red { background: var(--red); } .rc.black { background: #17171a; }
+.rtable-wrap { background: radial-gradient(ellipse at 50% 0%, #1150a4, #0b3a7a 75%); }

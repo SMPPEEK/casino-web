@@ -1,0 +1,74 @@
+/* ===== Cartas de píxeles (public/js/cards.js) =====================
+   El ancho sale de --cw (el alto es 1.45 × ancho). Se puede cambiar en línea: style="--cw: 70px".
+   Clases de estado: .is-selected .is-disabled .is-new (entrada) .is-winning (resaltada). */
+.pcard {
+  --cw: 84px;
+  position: relative; flex: none; display: block;
+  width: var(--cw); height: calc(var(--cw) * 1.45);
+  background: #f6efdc; color: #1d1d24; user-select: none;
+  border: 0; border-radius: 0;
+  /* borde de píxeles escalonado */
+  box-shadow:
+    0 calc(var(--cw) * .03) 0 0 #2a1d10, 0 calc(var(--cw) * -.03) 0 0 #2a1d10,
+    calc(var(--cw) * .03) 0 0 0 #2a1d10, calc(var(--cw) * -.03) 0 0 0 #2a1d10,
+    inset 0 0 0 calc(var(--cw) * .025) #cdbf9c,
+    0 calc(var(--cw) * .09) 0 calc(var(--cw) * .01) rgba(0, 0, 0, .35);
+  font-family: var(--pixel, ui-monospace, Consolas, monospace);
+  font-size: calc(var(--cw) * .2);
+  transition: transform .12s steps(3), box-shadow .12s;
+}
+.pcard-sm { --cw: 56px; }
+.pcard-md { --cw: 84px; }
+.pcard-lg { --cw: 110px; }
+button.pcard, .pcard[role="button"] { cursor: pointer; padding: 0; font: inherit; }
+button.pcard:hover:not(:disabled):not(.is-disabled), .pcard.is-hover:hover { transform: translateY(calc(var(--cw) * -.1)); }
+.pcard.is-selected { transform: translateY(calc(var(--cw) * -.18)); outline: calc(var(--cw) * .04) solid #ffd966; outline-offset: calc(var(--cw) * .02); }
+.pcard.is-disabled { filter: saturate(.55) brightness(.8); cursor: not-allowed; }
+.pcard.is-winning { outline: calc(var(--cw) * .045) solid #7be0a0; outline-offset: calc(var(--cw) * .02); animation: pcard-glow .8s steps(4) 3; }
+.pcard.is-new { animation: pcard-in .35s steps(5) both; }
+@keyframes pcard-in { from { transform: translateY(calc(var(--cw) * -.6)) rotate(-6deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes pcard-glow { 50% { filter: brightness(1.25); } }
+
+.pcard .idx { position: absolute; display: flex; flex-direction: column; align-items: center; gap: calc(var(--cw) * .02); line-height: 1; font-weight: 700; z-index: 2; }
+.pcard .idx.tl { top: calc(var(--cw) * .05); left: calc(var(--cw) * .06); }
+.pcard .idx.br { bottom: calc(var(--cw) * .05); right: calc(var(--cw) * .06); transform: rotate(180deg); }
+.pcard .idx-suit { width: calc(var(--cw) * .13); height: auto; display: block; }
+.pcard .suit-icon { display: inline-block; vertical-align: -2px; image-rendering: pixelated; }
+
+.pcard .pips, .pcard .fig {
+  position: absolute; left: calc(var(--cw) * .24); right: calc(var(--cw) * .24); top: calc(var(--cw) * .12); bottom: calc(var(--cw) * .12);
+}
+.pcard .pips { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(5, 1fr); place-items: center; }
+.pcard .pips.en { grid-template-rows: repeat(7, 1fr); }
+.pcard .pip { width: calc(var(--cw) * .2); height: auto; display: block; }
+.pcard .pip.big { width: calc(var(--cw) * .42); }
+.pcard .pip.flip { transform: rotate(180deg); }
+.pcard .fig { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--cw) * .06); }
+.pcard .emblem { width: calc(var(--cw) * .4); height: auto; display: block; }
+.pcard .fig-suit { width: calc(var(--cw) * .22); }
+.pcard .face-letter { font-size: calc(var(--cw) * .3); font-weight: 700; line-height: 1; }
+.pcard-en.red { color: #c4161f; }
+.pcard-en.joker { background: #fff3c4; }
+.pcard .joker-text { font-size: calc(var(--cw) * .11); letter-spacing: .05em; color: #7a1018; }
+.pcard-es[data-s="O"] { background: #fbf1cf; }
+
+.pcard-back { border: 0; }
+.pcard-back.back-es {
+  background:
+    linear-gradient(45deg, transparent 46%, rgba(255, 217, 102, .55) 46% 54%, transparent 54%) 0 0 / 25% 17.2%,
+    linear-gradient(-45deg, transparent 46%, rgba(255, 217, 102, .55) 46% 54%, transparent 54%) 0 0 / 25% 17.2%,
+    #7a1018;
+  box-shadow:
+    0 calc(var(--cw) * .03) 0 0 #2a1d10, 0 calc(var(--cw) * -.03) 0 0 #2a1d10,
+    calc(var(--cw) * .03) 0 0 0 #2a1d10, calc(var(--cw) * -.03) 0 0 0 #2a1d10,
+    inset 0 0 0 calc(var(--cw) * .06) #f6efdc, 0 calc(var(--cw) * .09) 0 calc(var(--cw) * .01) rgba(0, 0, 0, .35);
+}
+.pcard-back.back-en {
+  background:
+    conic-gradient(from 90deg at 50% 50%, #1b4a95 0 25%, #2a6fd1 0 50%, #1b4a95 0 75%, #2a6fd1 0) 0 0 / 16.6% 11.5%;
+  box-shadow:
+    0 calc(var(--cw) * .03) 0 0 #2a1d10, 0 calc(var(--cw) * -.03) 0 0 #2a1d10,
+    calc(var(--cw) * .03) 0 0 0 #2a1d10, calc(var(--cw) * -.03) 0 0 0 #2a1d10,
+    inset 0 0 0 calc(var(--cw) * .06) #f6efdc, 0 calc(var(--cw) * .09) 0 calc(var(--cw) * .01) rgba(0, 0, 0, .35);
+}
+@media (prefers-reduced-motion: reduce) { .pcard.is-new, .pcard.is-winning { animation: none; } }

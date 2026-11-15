@@ -1,0 +1,64 @@
+/* Panel de administración (usa las variables del tema) */
+.adm-root { max-width: 1180px; margin: 0 auto; padding: 20px 16px 60px; }
+.adm-login { padding: 24px; }
+.adm-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.adm-top h1 { margin: 0; font-size: clamp(1.3rem, 4vw, 2rem); }
+.adm-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.adm-actions small { color: var(--muted); }
+.adm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.adm-card { padding: 12px 14px; }
+.adm-card small { display: block; color: var(--muted); font-family: var(--pixel); text-transform: uppercase; font-size: .7rem; }
+.adm-card b { font-family: var(--pixel); font-size: 1.3rem; color: var(--gold-2); }
+.adm-card b.pos { color: var(--good); } .adm-card b.neg { color: var(--bad); }
+.adm-section { padding: 14px; margin-bottom: 18px; }
+.adm-section h2 { margin: 0 0 10px; font-size: 1.1rem; }
+.adm-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.adm-search { width: 100%; max-width: 340px; padding: 10px; margin-bottom: 10px; }
+.adm-scroll { overflow-x: auto; }
+.adm-table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 640px; }
+.adm-table th { text-align: left; font-family: var(--pixel); text-transform: uppercase; font-size: .7rem; color: var(--muted); white-space: nowrap; }
+.adm-table th, .adm-table td { padding: 8px 8px; border-bottom: 2px solid #000; vertical-align: top; }
+.adm-table td.num, .adm-table th.num { text-align: right; white-space: nowrap; }
+.adm-table tr.row { cursor: pointer; }
+.adm-table tr.row:hover td { background: rgba(255,255,255,.05); }
+.adm-table tr.detail td { background: rgba(0,0,0,.3); }
+.pos { color: var(--good); } .neg { color: var(--bad); }
+.adm-ip { display: block; font-family: ui-monospace, Consolas, monospace; font-size: .82rem; }
+.adm-ip small { color: var(--muted); }
+.adm-uuid { display: block; font-family: ui-monospace, Consolas, monospace; font-size: .75rem; color: var(--muted); }
+.adm-note { color: var(--muted); font-size: .85rem; margin: 6px 0 0; }
+.adm-error { color: var(--bad); min-height: 1.2em; }
+body.admin { display: block; }
+.adm-root { width: 100%; min-width: 0; box-sizing: border-box; }
+.adm-section, .adm-cards, .adm-top { min-width: 0; max-width: 100%; }
+.adm-section { overflow: hidden; }
+.adm-search { box-sizing: border-box; }
+
+/* avisos */
+.adm-section summary { cursor: pointer; font-family: var(--pixel); text-transform: uppercase; }
+.adm-prefs { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.adm-pref { display: flex; align-items: center; gap: 8px; white-space: pre; }
+.adm-num { width: 110px; padding: 6px 8px; }
+.adm-toasts { position: fixed; top: 12px; right: 12px; z-index: 100; display: flex; flex-direction: column; gap: 8px; width: min(360px, calc(100vw - 24px)); pointer-events: none; }
+.adm-toast { pointer-events: auto; display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; align-items: start; padding: 10px 12px; background: #2b2b2f; color: #fff;
+  box-shadow: inset 3px 3px 0 #7c7c82, inset -3px -3px 0 #1c1c1f, 0 0 0 3px #000, 5px 6px 0 3px rgba(0,0,0,.4); animation: adm-in .25s steps(4) both; font-size: .9rem; }
+.adm-toast b { font-family: var(--pixel); font-size: .75rem; padding: 2px 6px; background: #000; color: var(--gold-2); }
+.adm-toast.win b { color: var(--good); } .adm-toast.loss b, .adm-toast.bridge b { color: var(--bad); }
+.adm-toast.bridge { box-shadow: inset 3px 3px 0 #b3261e, inset -3px -3px 0 #5a0f0a, 0 0 0 3px #000, 5px 6px 0 3px rgba(0,0,0,.4); }
+.adm-toast-x { background: none; border: 0; color: #fff; font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 0 4px; }
+@keyframes adm-in { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .adm-toast { animation: none; } }
+
+/* ventana de inicio de sesión */
+.adm-overlay { position: fixed; inset: 0; display: grid; place-items: center; padding: 16px; background: rgba(0,0,0,.6); }
+.adm-login { margin: 0; width: min(420px, 100%); text-align: left; animation: adm-in .25s steps(4) both; }
+.adm-login h1 { text-align: center; margin: 8px 0 4px; }
+.adm-login img { display: block; margin: 0 auto; }
+.adm-login .hint { text-align: center; margin: 0 0 12px; }
+.adm-form { display: flex; flex-direction: column; gap: 6px; }
+.adm-form input { width: 100%; box-sizing: border-box; margin: 0; padding: 12px; font-size: 1rem; }
+.adm-passrow { display: flex; gap: 8px; align-items: stretch; }
+.adm-passrow input { flex: 1; min-width: 0; }
+.adm-form .wide { width: 100%; margin-top: 6px; }
+.legal-page p { line-height: 1.6; color: #e4e4e8; }
+.legal-page h2 { color: var(--gold-2); }
